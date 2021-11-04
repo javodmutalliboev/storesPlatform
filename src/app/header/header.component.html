@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <span>
+    <a routerLink="/" (click) = 'setDocTitle("User")'>Stores Map</a>
+  </span>
+  <span class="spacer"></span>
+  <ul>
+    <li *ngIf="adminIsAuthenticated">
+      <a
+        mat-button routerLink="/create"
+        routerLinkActive="mat-accent" (click)='setDocTitle("Store Create")'>New Store</a>
+    </li>
+    <li *ngIf="!adminIsAuthenticated">
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent" (click)='setDocTitle("Login")'>Login</a>
+    </li>
+    <li *ngIf="adminIsAuthenticated">
+      <button
+        mat-button (click)="onLogout()">
+        Logout
+      </button>
+    </li>
+  </ul>
+</mat-toolbar>

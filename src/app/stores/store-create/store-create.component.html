@@ -1,0 +1,54 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSaveStore(storeForm)" #storeForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field style="width: 49%; margin-right: 8px;">
+      <input
+        matInput
+        type="text"
+        name="lat"
+        [ngModel]="store?.location.lat"
+        required
+        placeholder="Latitude"
+        #lat="ngModel">
+      <mat-error *ngIf="lat.invalid">Latitude.</mat-error>
+    </mat-form-field>
+    <mat-form-field style="width: 49%;">
+      <input
+        matInput
+        type="text"
+        name="long"
+        [ngModel]="store?.location.long"
+        required
+        placeholder="Longitude"
+        #long="ngModel">
+      <mat-error *ngIf="long.invalid">Longitude.</mat-error>
+    </mat-form-field>
+    <mat-form-field style="width: 100%; margin: auto">
+      <input
+        matInput
+        type="text"
+        name="title"
+        [ngModel]="store?.title"
+        required
+        minlength="3"
+        placeholder="Store's Title"
+        #title="ngModel">
+      <mat-error *ngIf="title.invalid">Please enter the store's title.</mat-error>
+    </mat-form-field>
+    <mat-form-field style="width: 100%; margin: auto">
+      <textarea
+        matInput
+        rows="2"
+        name="description"
+        [ngModel]="store?.description"
+        required
+        placeholder="Store's Description"
+        #description="ngModel"></textarea>
+      <mat-error *ngIf="description.invalid">Please enter the store's description.</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">Save Store</button>
+  </form>
+</mat-card>
